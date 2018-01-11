@@ -1,5 +1,5 @@
 import re
-
+from threading import Thread
 import requests
 
 
@@ -22,6 +22,15 @@ def perform_search(url, text, options):
     r = requests.get(url)
     result_evaluate(options, text, r.text)
     pass
+
+
+def single_search(search_text):
+    r = requests.get('https://baidu.com/s?wd=' + search_text)
+    m = re.search('百度为您找到相关结果约(.+?)个', r.text)
+    if m:
+        print(search_text.split()[-1], m.group(1))
+        return
+    print(search_text.split()[-1], 0)
 
 
 def remove_punctuation(line):

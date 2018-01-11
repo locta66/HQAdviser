@@ -5,7 +5,7 @@ import requests
 import timeit
 import base64
 from PIL import Image
-from utils import perform_search, remove_punctuation, get_ocr_key
+from utils import perform_search, remove_punctuation, get_ocr_key, single_search
 from threading import Thread
 
 c = wda.Client()
@@ -23,6 +23,9 @@ while True:
     out = im.resize((1080, 1920))
     print(out.size)
     # parameter4 1100 for zhishichaoren 1200 for baiwanyingxiong
+    # 芝士超人
+    # region = out.crop((75, 300, 1167, 1100))
+    # 百万英雄
     region = out.crop((75, 315, 1167, 1200))  # iPhone 7P
     imgByteArr = io.BytesIO()
     region.save(imgByteArr, format='PNG')
@@ -52,6 +55,10 @@ while True:
     Thread(perform_search('https://baidu.com/s?wd=' + question + '&rn=50', "question with options res:", options))
     Thread(perform_search('https://baidu.com/s?wd=' + pure_question + '&rn=50', "pure question res:", options))
 
+    # print("single search res")
+    # Thread(single_search('https://baidu.com/s?wd=' + pure_question + " " + option1))
+    # Thread(single_search('https://baidu.com/s?wd=' + pure_question + " " + option2))
+    # Thread(single_search('https://baidu.com/s?wd=' + pure_question + " " + option3))
     end = timeit.default_timer()
     print("time elapsed", end - start, "seconds")
     print("按键继续，或q键退出:")
