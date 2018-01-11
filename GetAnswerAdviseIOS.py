@@ -54,8 +54,8 @@ while True:
 
     end = timeit.default_timer()
     print("time elapsed", end - start, "seconds")
-
-    next = input("按键继续，或q键退出:")
+    print("按键继续，或q键退出:")
+    next = input()
 
     if next == 'q':
         break
