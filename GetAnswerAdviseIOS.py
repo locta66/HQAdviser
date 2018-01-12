@@ -14,7 +14,7 @@ keys = get_ocr_key('config/OCR_KEY')
 api_key = keys[0]
 api_secret = keys[1]
 token = keys[2]
-
+#special for "哪一项"
 while True:
     start = timeit.default_timer()
     c.screenshot('1.png')
@@ -24,7 +24,7 @@ while True:
     print(out.size)
     # parameter4 1100 for zhishichaoren 1200 for baiwanyingxiong
     # 芝士超人
-    # region = out.crop((75, 300, 1167, 1100))
+    # region = out.crop((75, 250, 1167, 1100))
     # 百万英雄
     region = out.crop((75, 315, 1167, 1200))  # iPhone 7P
     imgByteArr = io.BytesIO()
@@ -52,8 +52,9 @@ while True:
     option3 = remove_punctuation(word_res[-3]['words'])
     options = [option1, option2, option3]
 
-    Thread(perform_search('https://baidu.com/s?wd=' + question + '&rn=50', "question with options res:", options))
     Thread(perform_search('https://baidu.com/s?wd=' + pure_question + '&rn=50', "pure question res:", options))
+    Thread(perform_search('https://baidu.com/s?wd=' + question + '&rn=50', "question with options res:", options))
+
 
     # print("single search res")
     # Thread(single_search('https://baidu.com/s?wd=' + pure_question + " " + option1))
