@@ -46,3 +46,13 @@ def get_ocr_key(filepath):
         token = line.split()
         tokens.append(token)
     return tokens
+
+
+def tips(options, question):
+    for option in options:
+        if option in question:
+            print("do not choose", option)
+
+    if '不' in question or '没有' in question:
+        print('选择最少的')
+

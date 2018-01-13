@@ -5,7 +5,7 @@ import requests
 import timeit
 import base64
 from PIL import Image
-from utils import perform_search, remove_punctuation, get_ocr_key, single_search
+from utils import perform_search, remove_punctuation, get_ocr_key, single_search, tips
 from threading import Thread
 
 c = wda.Client()
@@ -26,7 +26,7 @@ while True:
     # 芝士超人
     # region = out.crop((75, 250, 1167, 1100))
     # 百万英雄
-    region = out.crop((75, 315, 1167, 1200))  # iPhone 7P
+    region = out.crop((75, 300, 1167, 1200))  # iPhone 7P
     imgByteArr = io.BytesIO()
     region.save(imgByteArr, format='PNG')
     image_data = imgByteArr.getvalue()
@@ -54,6 +54,8 @@ while True:
 
     Thread(perform_search('https://baidu.com/s?wd=' + pure_question + '&rn=50', "pure question res:", options))
     Thread(perform_search('https://baidu.com/s?wd=' + question + '&rn=50', "question with options res:", options))
+
+    tips(options, pure_question)
 
 
     # print("single search res")
