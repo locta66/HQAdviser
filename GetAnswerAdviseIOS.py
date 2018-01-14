@@ -46,16 +46,17 @@ while True:
         pure_question += word_res[idx]['words']
 
     print(question)
+
     question = urllib.parse.quote(question)
     option1 = remove_punctuation(word_res[-1]['words'])
     option2 = remove_punctuation(word_res[-2]['words'])
     option3 = remove_punctuation(word_res[-3]['words'])
     options = [option1, option2, option3]
 
+    tips(options, pure_question)
     Thread(perform_search('https://baidu.com/s?wd=' + pure_question + '&rn=50', "pure question res:", options))
     Thread(perform_search('https://baidu.com/s?wd=' + question + '&rn=50', "question with options res:", options))
 
-    tips(options, pure_question)
 
 
     # print("single search res")

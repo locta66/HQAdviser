@@ -54,5 +54,8 @@ def tips(options, question):
             print("do not choose", option)
 
     if '不' in question or '没有' in question:
+        print('\'\'\'')
+        print('tips：')
         print('选择最少的')
+        print('\'\'\'')
 
