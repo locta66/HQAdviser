@@ -34,7 +34,7 @@ def single_search(search_text):
 
 
 def remove_punctuation(line):
-    rule = re.compile(r"[^a-zA-Z0-9\u4e00-\u9fa5]")
+    rule = re.compile(r"[^a-zA-Z0-9\u4e00-\u9fa5\\.\\·\\,]")
     line = rule.sub('', line)
     return line
 
@@ -58,4 +58,3 @@ def tips(options, question):
         print('tips：')
         print('选择最少的')
         print('\'\'\'')
-

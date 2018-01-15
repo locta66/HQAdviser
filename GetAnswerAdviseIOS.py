@@ -25,7 +25,7 @@ while True:
     # parameter4 1100 for zhishichaoren 1200 for baiwanyingxiong
     # 芝士超人
     # region = out.crop((75, 250, 1167, 1100))
-    # 百万英雄
+    # 百万英雄 百万赢家
     region = out.crop((75, 300, 1167, 1200))  # iPhone 7P
     imgByteArr = io.BytesIO()
     region.save(imgByteArr, format='PNG')
@@ -39,7 +39,7 @@ while True:
     question_num = res_num - 3
     word_res = r.json()['words_result']
     for idx in range(len(word_res)):
-        if idx >= question_num - 1:
+        if idx > question_num - 1:
             question += " " + word_res[idx]['words']
             continue
         question += word_res[idx]['words']
